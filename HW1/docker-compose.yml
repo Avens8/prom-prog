@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  
+  rabbit:
+    image: rabbitmq:latest
+    restart: always
+    ports:
+    - '5672:5672'
+
+  consumer:
+    build: consumer
+    depends_on:
+      - rabbit
+    restart: always
+
+  producer:
+    build: producer
+    depends_on:
+      - rabbit
+    restart: always
