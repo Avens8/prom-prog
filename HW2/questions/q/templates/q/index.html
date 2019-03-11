@@ -1,0 +1,15 @@
+<form action="/q/" method="post">
+    {% csrf_token %}
+    {{ field }}
+    <input type="submit" value="Ok">
+</form>
+{% if latest_questions %}
+	<p>6 latest questions:</p>
+    <ul>
+    {% for question in latest_questions %}
+        <li>{{ question.question_text }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no questions.</p>
+{% endif %}
